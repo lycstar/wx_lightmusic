@@ -1,0 +1,42 @@
+<import src="../../common/item/item.wxml" />
+<!-- 坑，设置view背景真机不会显示，采用image全屏 -->
+<!-- <view style="background-image: url('../../image/bg.jpg');background-repeat: no-repeat;background-attachment: fixed;"> -->
+<view>
+  <image class='bg' mode='aspectFill' src="../../image/{{playing==1?'bg.jpg':'bg2.jpg'}}">
+  </image>
+  <view class='search_box'>
+    <view class='search_left_right'>
+      <image src='../../image/ic_music.png' class='search_image' />
+    </view>
+    <input class="search_input" placeholder-class="placeholderStyle" placeholder="Everything is ok..." bindinput='getKeyWord' />
+    <view class='search_left_right'>
+      <image src='../../image/ic_music_search.png' class="search_image" bindtap='clickSearch' />
+    </view>
+  </view>
+
+  <scroll-view scroll-y scroll-y bindscrolltolower="searchMusic" style="height: {{scrollHeight}}px;padding-top:120px;padding-bottom:60px;">
+    <block class="item" wx:key="dataId" wx:for-items="{{dataList}}">
+      <view bindtap="getRealUrl" data-music="{{item}}">
+        <template is="searchItem" data="{{title:item.name,singer_album:item.singer[0].name+' | '+item.album.title,image_src:'https://y.gtimg.cn/music/photo_new/T002R300x300M000'+item.album.mid+ '.jpg?max_age=2592000'}}"></template>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="controler_music">
+    <!-- <view class='controler_music_slider'> -->
+    <!-- </view> -->
+    <view class="controler_music_bottom">
+      <view class="controler_music_image">
+        <image class='controler_img' src='{{currentMusic.coverImgUrl}}' />
+      </view>
+      <view class="controler_music_info">
+        <view class="controler_music_title">{{currentMusic.title}}</view>
+        <view class="controler_music_singer">{{currentMusic.singer}}</view>
+      </view>
+      <view class="controler_music_status" bindtap='musicControler'>
+        <!-- <image class='controler_img' src="../../image/ic_{{playing==-1?'play.png':playing==1?'pause.png':'play.png'}}" /> -->
+        <image class='controler_status_img' src="../../image/ic_{{playing==1?'pause.png':'play.png'}}" />
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,120 @@
+@import "../../common/item/item.wxss";
+
+.bg {
+  /* 全屏背景 */
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.search_box {
+  /* background: #3c9; */
+  display: flex;
+  padding-top: 60px;
+  height: 60px;
+  width: 100%;
+  /* 置顶 */
+  top: 0px;
+  position: fixed;
+}
+
+.search_input {
+  /* border: solid 1px red; */
+  margin-left: 5px;
+  font-size: 14px;
+  height: 60px;
+  color: #d81e06;
+  flex: 1;
+  /* text-decoration: underline;
+  text-decoration-color: #3c9; */
+}
+
+.search_left_right {
+  width: 60px;
+  height: 60px;
+}
+
+.search_image {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* .music_list {
+  padding-top: 120px;
+} */
+
+.placeholderStyle {
+  color: #d81e06;
+  font-size: 14px;
+}
+
+.controler_music {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* 置底 */
+  bottom: 0px;
+  position: fixed;
+  height: 60px;
+}
+
+.controler_music_bottom {
+  width: 100%;
+  display: flex;
+}
+
+.controler_music_image {
+  height: 60px;
+  width: 60px;
+}
+
+.controler_music_info {
+  display: flex;
+  height: 60px;
+  margin-left: 5px;
+  flex-direction: column;
+  flex: 1;
+}
+
+.controler_music_title {
+  font-size: 15px;
+  height: 30px;
+  line-height: 30px;
+  align-content: center;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.controler_music_singer {
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  align-content: center;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.controler_music_status {
+  margin-left: auto;
+  margin-right: 10px;
+  height: 60px;
+  width: 60px;
+}
+
+.controler_img {
+  margin: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+}
+
+.controler_status_img {
+  margin: 15px;
+  height: 30px;
+  width: 30px;
+}

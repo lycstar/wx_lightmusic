@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "black",
+    "navigationBarBackgroundColor": "#33cc99",
+    "navigationBarTitleText": "轻语音乐",
+    "navigationBarTextStyle": "white",
+     "navigationStyle": "custom"
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
+}

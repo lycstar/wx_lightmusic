@@ -1,0 +1,46 @@
+.music_item {
+  height: 60px;
+  display: flex;
+}
+
+.music_image_box {
+  margin-left: 5px;
+  height: 60px;
+  width: 60px;
+}
+
+.music_image {
+  margin: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+}
+
+.music_info {
+  display: flex;
+  height: 60px;
+  flex: 1;
+  flex-direction: column;
+}
+
+.music_title {
+  font-size: 15px;
+  height: 30px;
+  line-height: 30px;
+  align-content: center;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.music_singer_albm {
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  align-content: center;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
