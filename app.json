@@ -7,7 +7,7 @@
     "navigationBarBackgroundColor": "#33cc99",
     "navigationBarTitleText": "轻语音乐",
     "navigationBarTextStyle": "white",
-     "navigationStyle": "custom"
+    "navigationStyle": "custom"
   },
   "requiredBackgroundModes": [
     "audio"

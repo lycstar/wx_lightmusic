@@ -2,29 +2,41 @@
 <!-- 坑，设置view背景真机不会显示，采用image全屏 -->
 <!-- <view style="background-image: url('../../image/bg.jpg');background-repeat: no-repeat;background-attachment: fixed;"> -->
 <view>
-  <image class='bg' mode='aspectFill' src="../../image/{{playing==1?'bg.jpg':'bg2.jpg'}}">
-  </image>
-  <view class='search_box'>
-    <view class='search_left_right'>
-      <image src='../../image/ic_music.png' class='search_image' />
-    </view>
-    <input class="search_input" placeholder-class="placeholderStyle" placeholder="Everything is ok..." bindinput='getKeyWord' />
-    <view class='search_left_right'>
-      <image src='../../image/ic_music_search.png' class="search_image" bindtap='clickSearch' />
-    </view>
-  </view>
+  <image class='bg' mode='aspectFill' src="{{currentMusic.coverImgUrl}}" />
 
-  <scroll-view scroll-y scroll-y bindscrolltolower="searchMusic" style="height: {{scrollHeight}}px;padding-top:120px;padding-bottom:60px;">
-    <block class="item" wx:key="dataId" wx:for-items="{{dataList}}">
-      <view bindtap="getRealUrl" data-music="{{item}}">
-        <template is="searchItem" data="{{title:item.name,singer_album:item.singer[0].name+' | '+item.album.title,image_src:'https://y.gtimg.cn/music/photo_new/T002R300x300M000'+item.album.mid+ '.jpg?max_age=2592000'}}"></template>
+  <swiper style="height: {{swiperHeight}}px;">
+    <swiper-item class="middle-l">
+      <view class='search_box' style="padding-top:60px;">
+        <view class='search_left_right'>
+          <image src='../../image/ic_music.png' class='search_image' />
+        </view>
+        <input class="search_input" placeholder-class="placeholderStyle" placeholder="Everything is ok..." bindinput='getKeyWord' />
+        <view class='search_left_right'>
+          <image src='../../image/ic_music_search.png' class="search_image" bindtap='clickSearch' />
+        </view>
       </view>
-    </block>
-  </scroll-view>
+      <scroll-view scroll-y bindscrolltolower="searchMusic" style="height: {{searchScrollHeight}}px;padding-top:120px;">
+        <block class="item" wx:key="dataId" wx:for-items="{{dataList}}">
+          <view bindtap="getMusic" data-music="{{item}}">
+            <template is="searchItem" data="{{title:item.name,singer_album:item.singer[0].name+' | '+item.album.title,image_src:'https://y.gtimg.cn/music/photo_new/T002R300x300M000'+item.album.mid+ '.jpg?max_age=2592000'}}"></template>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="middle-r">
+      <scroll-view class="lyric-wrapper" style="height: {{lyricScrollHeight}}px;padding-top:60px;" scroll-y scroll-into-view="line{{toLineNum}}" scroll-with-animation>
+        <view v-if="currentLyric">
+          <view ref="lyricLine" id="line{{index}}" class="text {{currentLineNum == index ? 'current': '' }}" wx:for="{{currentLyric.lines}}">{{item.txt}}
+          </view>
+        </view>
+        <view wx:if="{{!currentLyric}}">
+          <view class="text current">暂无歌词</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
 
   <view class="controler_music">
-    <!-- <view class='controler_music_slider'> -->
-    <!-- </view> -->
     <view class="controler_music_bottom">
       <view class="controler_music_image">
         <image class='controler_img' src='{{currentMusic.coverImgUrl}}' />
