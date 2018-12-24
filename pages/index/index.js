@@ -13,9 +13,11 @@ Page({
     //-1未初始化,或播放完
     //0暂停
     //1播放
+
     currentLyric: null,
     currentLineNum: 0,
     toLineNum: -1,
+
     currentMusic: {
       mid: "",
       title: "",
@@ -23,6 +25,7 @@ Page({
       singer: "",
       url: "",
       coverImgUrl: "../../image/bg.png",
+      duration: ""
     },
   },
   onLoad: function() {
@@ -40,6 +43,7 @@ Page({
       this.setData({
         // 更新当前music
         playing: 1,
+        'currentMusic.duration': backgroundAudioManager.duration
       });
     });
     backgroundAudioManager.onPause(() => {
@@ -78,10 +82,9 @@ Page({
     //监听音乐播放进度
     backgroundAudioManager.onTimeUpdate(() => {
       const currentTime = backgroundAudioManager.currentTime
-      const duration = backgroundAudioManager.duration
       this.setData({
         currentTime: this.formatTime(currentTime),
-        percent: currentTime / duration
+        percent: currentTime / this.data.currentMusic.duration
       })
       if (this.data.currentLyric) {
         this.handleLyric(currentTime * 1000)
@@ -138,7 +141,7 @@ Page({
     query.exec(res => {
       let searchHeight = res[0].height
       let windowHeight = wx.getSystemInfoSync().windowHeight
-      let scrollHeight = windowHeight - searchHeight
+      let scrollHeight = windowHeight - 2 * searchHeight
       this.setData({
         lyricScrollHeight: scrollHeight
       })
@@ -178,7 +181,7 @@ Page({
           dataList: list,
         });
         that.data.page++;
-        console.log(that.data.dataList);
+        // console.log(that.data.dataList);
       },
       fail: function() {
         wx.showToast({
@@ -211,7 +214,7 @@ Page({
       method: 'GET',
       success: function(res) {
         if (res.data.mp3_128k != "") {
-          console.log(res.data.mp3_128k);
+          // console.log(res.data.mp3_128k);
           that.setData({
             // 保存当前music
             'currentMusic.mid': music.id,
@@ -247,20 +250,13 @@ Page({
       success: function(res) {
         // console.log(res.data.lyric)
         const lyric = that.normalizeLyric(res.data.lyric)
-        console.log(lyric)
+        // console.log(lyric)
         const currentLyric = new Lyric(lyric)
         that.setData({
           currentLyric: currentLyric
         })
       },
-      fail: function() {
-        wx.showToast({
-          title: '失败',
-          icon: 'none',
-          duration: 1000,
-          mask: true
-        })
-      },
+      fail: function() {},
       complete: function() {}
     })
   },
@@ -294,8 +290,8 @@ Page({
       currentText: lines[lineNum + 1] && lines[lineNum + 1].txt
     })
 
-    let toLineNum = lineNum - 5
-    if (lineNum > 5 && toLineNum != this.data.toLineNum) {
+    let toLineNum = lineNum - 7
+    if (lineNum > 7 && toLineNum != this.data.toLineNum) {
       this.setData({
         toLineNum: toLineNum
       })

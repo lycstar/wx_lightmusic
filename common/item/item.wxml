@@ -3,7 +3,7 @@
     <view class="music_image_box">
       <image class="music_image" src="{{image_src}}" />
     </view>
-    <view class="music_info">
+    <view class="music_info_box">
       <view class="music_title">{{title}}</view>
       <view class="music_singer_albm">{{singer_album}}</view>
     </view>

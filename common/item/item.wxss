@@ -16,10 +16,9 @@
   border-radius: 4px;
 }
 
-.music_info {
+.music_info_box {
   display: flex;
   height: 60px;
-  flex: 1;
   flex-direction: column;
 }
 

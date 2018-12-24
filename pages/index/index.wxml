@@ -5,7 +5,7 @@
   <image class='bg' mode='aspectFill' src="{{currentMusic.coverImgUrl}}" />
 
   <swiper style="height: {{swiperHeight}}px;">
-    <swiper-item class="middle-l">
+    <swiper-item class="middle-m">
       <view class='search_box' style="padding-top:60px;">
         <view class='search_left_right'>
           <image src='../../image/ic_music.png' class='search_image' />
@@ -24,9 +24,9 @@
       </scroll-view>
     </swiper-item>
     <swiper-item class="middle-r">
-      <scroll-view class="lyric-wrapper" style="height: {{lyricScrollHeight}}px;padding-top:60px;" scroll-y scroll-into-view="line{{toLineNum}}" scroll-with-animation>
+      <scroll-view class="lyric-wrapper" style="height: {{lyricScrollHeight}}px;padding-top:120px;padding-bottom:120px;" scroll-y scroll-into-view="line{{toLineNum}}" scroll-with-animation>
         <view v-if="currentLyric">
-          <view ref="lyricLine" id="line{{index}}" class="text {{currentLineNum == index ? 'current': '' }}" wx:for="{{currentLyric.lines}}">{{item.txt}}
+          <view ref="lyricLine" id="line{{index}}" wx:key="lyricLineId" class="text {{currentLineNum == index ? 'current': '' }}" wx:for="{{currentLyric.lines}}">{{item.txt}}
           </view>
         </view>
         <view wx:if="{{!currentLyric}}">

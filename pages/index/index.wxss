@@ -7,6 +7,8 @@
   width: 100%;
 }
 
+/* 左 */
+
 .search_box {
   /* background: #3c9; */
   display: flex;
@@ -22,7 +24,7 @@
   margin-left: 5px;
   font-size: 14px;
   height: 60px;
-  color: #d81e06;
+  color: #ffcd32;
   flex: 1;
   /* text-decoration: underline;
   text-decoration-color: #3c9; */
@@ -44,9 +46,29 @@
 } */
 
 .placeholderStyle {
-  color: #d81e06;
+  color: #ffcd32;
   font-size: 14px;
 }
+
+/* 右 */
+
+.lyric-wrapper {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.text {
+  line-height: 32px;
+  color: white;
+  font-size: 14px;
+}
+
+.current {
+  color: #ffcd32;
+}
+
+/* 底部 */
 
 .controler_music {
   width: 100%;
@@ -97,13 +119,6 @@
   overflow: hidden;
 }
 
-.controler_music_status {
-  margin-left: auto;
-  margin-right: 10px;
-  height: 60px;
-  width: 60px;
-}
-
 .controler_music_lyric {
   margin-left: auto;
   margin-right: 20px;
@@ -118,24 +133,15 @@
   border-radius: 4px;
 }
 
+.controler_music_status {
+  margin-left: auto;
+  margin-right: 10px;
+  height: 60px;
+  width: 60px;
+}
+
 .controler_status_img {
   margin: 15px;
   height: 30px;
   width: 30px;
-}
-
-.lyric-wrapper {
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-}
-
-.text {
-  line-height: 32px;
-  color: white;
-  font-size: 14px;
-}
-
-.current {
-  color: #ffcd32;
 }
